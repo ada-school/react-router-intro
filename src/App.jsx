@@ -1,28 +1,31 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Routes, Link } from "react-router-dom";
-
-import { BlogPost } from "./components/BlogPost.jsx";
-import { BlogList } from "./pages/BlogList.jsx";
+import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { RidesPage } from "./pages/RidesPage";
+import { RideDetailPage } from "./pages/RideDetailPage";
 
 function App() {
   return (
     <Router>
-      <div>
-        <h1>Blog</h1>
+      <main>
+        <h1>React Land - Theme Park</h1>
+      </main>
 
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/rides">Rides</Link>
+          </li>
+        </ul>
+      </nav>
 
-        <Routes>
-          <Route path="/" exact Component={BlogList} />
-          <Route path="/posts/:id" Component={BlogPost} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/rides" element={<RidesPage />} />
+        <Route path="/rides/:id" element={<RideDetailPage />} />
+      </Routes>
     </Router>
   );
 }
